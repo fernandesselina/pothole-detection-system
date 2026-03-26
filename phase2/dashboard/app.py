@@ -9,6 +9,7 @@ project_root = Path(__file__).resolve().parents[2]
 import folium
 from streamlit_folium import st_folium
 from PIL import Image
+from ultralytics import YOLO
 
 # ---------- PATHS & HELPERS ----------
 BASE_DIR = Path(__file__).resolve().parent.parent
