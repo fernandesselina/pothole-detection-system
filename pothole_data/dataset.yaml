@@ -1,0 +1,7 @@
+names:
+  0: pothole
+nc: 1
+path: C:\Users\ferna\OneDrive\Desktop\project\claude\pothole_data
+test: images/test
+train: images/train
+val: images/val

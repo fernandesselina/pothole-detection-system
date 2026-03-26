@@ -1,0 +1,7 @@
+venv/
+runs/
+datasets/
+__pycache__/
+*.pyc
+*.pt
+*.zip

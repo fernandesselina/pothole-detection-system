@@ -1,0 +1,20 @@
+[
+  {
+    "report_id": 1,
+    "image_path": "road_01.jpg",
+    "latitude": 19.0760,
+    "longitude": 72.8777,
+    "confidence": 0.89,
+    "timestamp": "2026-01-10 10:30",
+    "status": "Pending"
+  },
+  {
+    "report_id": 2,
+    "image_path": "road_02.jpg",
+    "latitude": 18.5204,
+    "longitude": 73.8567,
+    "confidence": 0.91,
+    "timestamp": "2026-01-11 14:15",
+    "status": "Resolved"
+  }
+]

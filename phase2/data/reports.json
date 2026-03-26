@@ -1,0 +1,80 @@
+[
+  {
+    "report_id": 1,
+    "image_path": "road_01.jpg",
+    "latitude": 19.076,
+    "longitude": 72.8777,
+    "confidence": 0.89,
+    "timestamp": "2026-01-10 10:30",
+    "status": "Resolved"
+  },
+  {
+    "report_id": 2,
+    "image_path": "road_02.jpg",
+    "latitude": 18.5204,
+    "longitude": 73.8567,
+    "confidence": 0.91,
+    "timestamp": "2026-01-11 14:15",
+    "status": "Resolved"
+  },
+  {
+    "report_id": 3,
+    "image_path": "pothole_5.jpg",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "confidence": 0.9047,
+    "timestamp": "2026-03-04T17:01:35.794173",
+    "status": "Pending",
+    "severity": "Moderate"
+  },
+  {
+    "report_id": 4,
+    "image_path": "pothole_4.jpg",
+    "latitude": 0.08,
+    "longitude": -0.05,
+    "confidence": 0.9184,
+    "timestamp": "2026-03-05T19:36:19.064663",
+    "status": "Resolved",
+    "severity": "Severe"
+  },
+  {
+    "report_id": 5,
+    "image_path": "pothole_7.jpg",
+    "latitude": 0.05,
+    "longitude": 0.05,
+    "confidence": 0.8904,
+    "timestamp": "2026-03-06T11:48:15.606941",
+    "status": "Resolved",
+    "severity": "Moderate"
+  },
+  {
+    "report_id": 6,
+    "image_path": "pothole_1.jpg",
+    "latitude": 0.18000000000000002,
+    "longitude": -0.09999999999999999,
+    "confidence": 0.9362,
+    "timestamp": "2026-03-24T21:55:29.969104",
+    "status": "Pending",
+    "severity": "Severe"
+  },
+  {
+    "report_id": 7,
+    "image_path": "pothole_6.jpg",
+    "latitude": 0.01,
+    "longitude": 0.01,
+    "confidence": 0.8771,
+    "timestamp": "2026-03-24T22:01:21.935010",
+    "status": "Pending",
+    "severity": "Severe"
+  },
+  {
+    "report_id": 8,
+    "image_path": "pothole_286.jpg",
+    "latitude": 0.05,
+    "longitude": -0.05,
+    "confidence": 0.8492,
+    "timestamp": "2026-03-25T01:08:34.777313",
+    "status": "Pending",
+    "severity": "Severe"
+  }
+]

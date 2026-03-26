@@ -1,0 +1,15 @@
+Steps:
+1. File 
+2. Terminal
+3. venv -> .\venv\Scripts\Activate.ps1
+4. streamlit run pothole_detection.py streamlit
+
+
+cd C:\Users\ferna\OneDrive\Desktop\project\claude
+venv\Scripts\Activate
+streamlit run pothole_detection.py
+
+phase 3
+venv\Scripts\activate
+cd phase2\dashboard
+streamlit run app.py
