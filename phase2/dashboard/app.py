@@ -5,15 +5,18 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from datetime import datetime
 from pathlib import Path
-project_root = Path(__file__).resolve().parents[2]
+import tempfile
+from PIL import Image
+from ultralytics import YOLO
 import folium
 from streamlit_folium import st_folium
-from PIL import Image
 
 
-# ---------- PATHS & HELPERS ----------
+# ---------- PROJECT ROOT & PATHS ----------
+project_root = Path(__file__).resolve().parents[2]
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_PATH = BASE_DIR / "data" / "reports.json"
+
 THEME = {
     "bg": "#0b1220",
     "panel": "#111a2b",
@@ -39,6 +42,7 @@ STATUS_MAP = {"Pending": THEME["danger"], "Resolved": THEME["success"]}
 REPORT_COLUMNS = ["report_id", "image_path", "latitude", "longitude", "confidence", "timestamp", "status", "severity"]
 
 
+# ---------- HELPER FUNCTIONS ----------
 def load_reports():
     return json.loads(DATA_PATH.read_text()) if DATA_PATH.exists() else []
 
@@ -333,8 +337,8 @@ if page == "Dashboard":
     else:
         st.info("No location data available.")
 
-
     st.write("Looking for data at:", DATA_PATH.resolve())
+
 
 elif page == "Pothole Detection":
 
@@ -357,39 +361,37 @@ elif page == "Pothole Detection":
 
         if st.button("Detect Potholes"):
 
-            from ultralytics import YOLO
-            import tempfile
-
-            model_candidates = [
-    project_root / "best.pt",  # NEW (your moved model)
-    project_root / "runs" / "detect" / "train4" / "weights" / "best.pt",
-    project_root / "yolov8n.pt",
-]
-            from pathlib import Path
-            project_root = Path(__file__).resolve().parents[2]
+            # Find model file
             model_candidates = [
                 project_root / "best.pt",
+                project_root / "runs" / "detect" / "train4" / "weights" / "best.pt",
                 project_root / "yolov8n.pt",
             ]
+
             model_path = next((p for p in model_candidates if p.exists()), None)
+
             if model_path is None:
-                if model_path is None:
-                    st.error("No model file found")
-                    st.stop()
-            from ultralytics import YOLO
+                st.error("No model file found. Checked locations:")
+                for p in model_candidates:
+                    st.code(str(p))
+                st.stop()
+
+            # Load model
             model = YOLO(str(model_path))
             st.caption(f"Loaded model: {model_path}")
 
-    # save uploaded image temporarily
+            # Save uploaded image temporarily
             with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as tmp:
                 tmp.write(uploaded_file.getvalue())
                 temp_path = tmp.name
 
+            # Run inference
             results = model(temp_path, conf=0.25)
 
-    # show detection result
+            # Show detection result
             annotated_frame = results[0].plot()
             st.image(annotated_frame, caption="Detection Result", use_container_width=True)
+
             if len(results[0].boxes) == 0:
                 st.warning("No detections found. This usually means the model is not trained for potholes, or confidence is too high.")
             else:
@@ -412,7 +414,8 @@ elif page == "Pothole Detection":
                 })
                 save_reports(existing_reports)
                 st.info(f"Report #{next_id} saved with severity: {severity or 'Minor'}")
-            
+
+
 elif page == "Analytics":
     st.title("Pothole Analytics")
 
