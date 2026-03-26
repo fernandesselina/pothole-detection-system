@@ -1,6 +1,7 @@
 # Smart Pothole Detection System Requirements
 # Core deep learning and computer vision
 torch>=2.0.0
+folium
 torchvision>=0.15.0
 ultralytics>=8.0.0
 opencv-python>=4.8.0
