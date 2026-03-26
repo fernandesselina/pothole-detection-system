@@ -2,6 +2,7 @@
 # Core deep learning and computer vision
 torch>=2.0.0
 folium
+streamlit-folium
 torchvision>=0.15.0
 ultralytics>=8.0.0
 opencv-python>=4.8.0
