@@ -365,7 +365,17 @@ elif page == "Pothole Detection":
     project_root / "runs" / "detect" / "train4" / "weights" / "best.pt",
     project_root / "yolov8n.pt",
 ]
-
+            from pathlib import Path
+            project_root = Path(__file__).resolve().parents[2]
+            model_candidates = [
+                project_root / "best.pt",
+                project_root / "yolov8n.pt",
+            ]
+            model_path = next((p for p in model_candidates if p.exists()), None)
+            if model_path is None:
+                if model_path is None:
+                    st.error("No model file found")
+                    st.stop()
             from ultralytics import YOLO
             model = YOLO(str(model_path))
             st.caption(f"Loaded model: {model_path}")
