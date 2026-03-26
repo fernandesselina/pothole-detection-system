@@ -358,15 +358,11 @@ elif page == "Pothole Detection":
             from ultralytics import YOLO
             import tempfile
 
-            project_root = Path(__file__).resolve().parents[2]
             model_candidates = [
-                project_root / "runs" / "detect" / "train4" / "weights" / "best.pt",  # trained pothole model
-                project_root / "yolov8n.pt",  # fallback model
-            ]
-            model_path = next((p for p in model_candidates if p.exists()), None)
-            if model_path is None:
-                st.error("No YOLO weights found. Expected runs/detect/train4/weights/best.pt or yolov8n.pt")
-                st.stop()
+    project_root / "best.pt",  # NEW (your moved model)
+    project_root / "runs" / "detect" / "train4" / "weights" / "best.pt",
+    project_root / "yolov8n.pt",
+]
 
             model = YOLO(str(model_path))
             st.caption(f"Loaded model: {model_path}")
